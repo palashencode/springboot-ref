@@ -1,6 +1,7 @@
 package com.java.springboot.controllers;
 
 import com.java.springboot.service.CountryService;
+import com.java.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,9 @@ public class ViewController {
 
     @Autowired
     CountryService countryService;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping(value = "/")
     public String index(Model model) {
@@ -37,6 +41,14 @@ public class ViewController {
         var params = new HashMap<String, Object>();
         params.put("countries", countries);
         return new ModelAndView("countries", params);
+    }
+
+    @GetMapping(value="/users")
+    public ModelAndView showUsers() {
+        var users = userService.getUsers();
+        var params = new HashMap<String, Object>();
+        params.put("users", users);
+        return new ModelAndView("users", params);
     }
 
 }

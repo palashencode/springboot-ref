@@ -13,8 +13,44 @@ View endpoints are as follows
 * http://localhost:60501/starter
 * http://localhost:60501/starter-blank
 
+Csv endpoints as follows ( i18n handled by jvm param )
+* http://localhost:60501/api/v1/csv/file/users
+* http://localhost:60501/api/v1/csv/download/users
+* http://localhost:60501/api/v1/csv/read/users ( read csv file )
+
+Json endpoints as follows : 
+* http://localhost:60501/api/v1/json/file/users
+* http://localhost:60501/api/v1/json/read/users
+
+PDF Controller Using PDF Box : ( i18n achieved with dynamic font loading )
+* http://localhost:60501/api/v1/pdf/file/users
+* http://localhost:60501/api/v1/pdf/download/users
+* http://localhost:60501/api/v1/pdf/download/password/users
+
+Excel Controller using apache poi :
+* http://localhost:60501/api/v1/excel/read/users
+* http://localhost:60501/api/v1/excel/download/users
+* http://localhost:60501/api/v1/excel/download/sample
+
 ### h2 database configuration
 password is 'password'
+
+JVM Params :
+- -Duser.timezone=UTC -Dfile.encoding=utf-8
+
+----
+###Features 
+- Internationalization added for file encodings
+- save to csv locally & download
+
+----
+###References
+- String Functions in Free Marker : 
+  - https://freemarker.apache.org/docs/ref_builtins_string.html
+- Data Types in H2 Database : 
+  - https://www.h2database.com/html/datatypes.html
+- Free Unicode Font
+  - https://djmilch.wordpress.com/2016/01/19/free-font-noto-sans-cjk-in-ttf/
 
 ----
 ### Spring Boot Reference Documentation
