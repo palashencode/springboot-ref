@@ -1,7 +1,10 @@
 ### Project Specific Documentation
 This can be used as a starter project for testing out endpoints and functionalities;
 
-Local endpoints active are below
+Local endpoints active are below - all end points are not mapped here. 
+This is to give the user  starting point. 
+Please use the swagger for comprehensive list of endpoints.
+
 * http://localhost:60501/swagger-ui/index.html
 * http://localhost:60501/v3/api-docs
 * http://localhost:60501/status
@@ -32,6 +35,19 @@ Excel Controller using apache poi :
 * http://localhost:60501/api/v1/excel/download/users
 * http://localhost:60501/api/v1/excel/download/sample
 
+XML Controller using JAXB :
+* http://localhost:60501/api/v1/xml/read/users
+* http://localhost:60501/api/v1/xml/file/users
+* http://localhost:60501/api/v1/xml/download/users
+
+Xpath Controller : 
+* http://localhost:60501/api/v1/xpath/transform/tutorials
+
+XSLT Controller : 
+* http://localhost:60501/api/v1/xslt/transform/users
+* http://localhost:60501/api/v1/xslt/transform/download/users
+
+
 ### h2 database configuration
 password is 'password'
 
@@ -51,6 +67,21 @@ JVM Params :
   - https://www.h2database.com/html/datatypes.html
 - Free Unicode Font
   - https://djmilch.wordpress.com/2016/01/19/free-font-noto-sans-cjk-in-ttf/
+- Json Parsing Tutorials 
+  - https://devqa.io/how-to-parse-json-in-java/
+  - https://www.baeldung.com/guide-to-jayway-jsonpath
+  - JSON Path Cheat Sheet -https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html
+  - https://lzone.de/cheat-sheet/JSONPath
+- Base64 Tutorial
+  - https://www.baeldung.com/java-base64-encode-and-decode
+  - URL and Filename safe Alphabet - https://www.ietf.org/rfc/rfc4648.txt
+- XSLT Cheat Sheet
+  - https://www.technical-recipes.com/2022/xslt-example-cheat-sheet/
+  - https://www.baeldung.com/java-extensible-stylesheet-language-transformations
+  - https://www.w3schools.com/xml/xsl_choose.asp
+  - https://www.ibm.com/support/pages/creating-utf-8-documents-xslt
+- 
+
 
 ----
 ### Spring Boot Reference Documentation
