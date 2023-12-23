@@ -47,6 +47,10 @@ XSLT Controller :
 * http://localhost:60501/api/v1/xslt/transform/users
 * http://localhost:60501/api/v1/xslt/transform/download/users
 
+Protocol Buffer Controller ( save/read from disk ) :
+* http://localhost:60501/api/v1/protobuf/read/users
+* http://localhost:60501/api/v1/protobuf/file/users
+
 
 ### h2 database configuration
 password is 'password'
@@ -80,8 +84,12 @@ JVM Params :
   - https://www.baeldung.com/java-extensible-stylesheet-language-transformations
   - https://www.w3schools.com/xml/xsl_choose.asp
   - https://www.ibm.com/support/pages/creating-utf-8-documents-xslt
-- 
-
+- Protocol Buffer :
+  - https://www.baeldung.com/google-protocol-buffer
+  - https://www.baeldung.com/spring-rest-api-with-protocol-buffers#overview
+  - https://github.com/protocolbuffers/protobuf/releases
+  - $ protoc --java_out=${OUTPUT_DIR} path/to/your/proto/file
+    - ..\src\main>protoc --java_out=java resources\protobuf\baeldung.proto
 
 ----
 ### Spring Boot Reference Documentation

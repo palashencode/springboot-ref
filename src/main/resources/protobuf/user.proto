@@ -1,0 +1,19 @@
+syntax = "proto3";
+package springboot;
+option java_package = "com.java.springboot.entities.protobuf";
+option java_outer_classname = "ProtocolBufferWrapper";
+
+message Users{
+  repeated User user = 1;
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+  string userName = 3;
+  string city = 4;
+  string description = 5;
+  string dateOfJoining = 6;
+  string exactDob = 7;
+  int32 status = 8;
+}
