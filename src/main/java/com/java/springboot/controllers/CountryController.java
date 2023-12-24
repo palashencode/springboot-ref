@@ -3,10 +3,7 @@ package com.java.springboot.controllers;
 import com.java.springboot.entities.Country;
 import com.java.springboot.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +20,13 @@ public class CountryController {
     }
 
     @GetMapping("/{name}")
-    public Country getCountry(String name){
+    public Country getCountry(@PathVariable  String name){
         return countryService.getCountry(name);
+    }
+
+    @GetMapping("/err")
+    public Country getCountryError(){
+        throw new RuntimeException("This is a custom error, thrown by the application.");
     }
 
     @DeleteMapping("/{name}")

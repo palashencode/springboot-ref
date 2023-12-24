@@ -51,6 +51,9 @@ Protocol Buffer Controller ( save/read from disk ) :
 * http://localhost:60501/api/v1/protobuf/read/users
 * http://localhost:60501/api/v1/protobuf/file/users
 
+Global Custom Error Handling Page : 
+* http://localhost:60501/api/v1/countries/err
+* 
 
 ### h2 database configuration
 password is 'password'
@@ -90,6 +93,11 @@ JVM Params :
   - https://github.com/protocolbuffers/protobuf/releases
   - $ protoc --java_out=${OUTPUT_DIR} path/to/your/proto/file
     - ..\src\main>protoc --java_out=java resources\protobuf\baeldung.proto
+- Global Error Handler :
+  - https://stackoverflow.com/questions/63022189/get-stack-trace-from-httpservletrequest-in-spring-boot
+  - https://www.baeldung.com/exception-handling-for-rest-with-spring
+
+
 
 ----
 ### Spring Boot Reference Documentation
