@@ -15,3 +15,11 @@ create table COUNTRIES(
   NAME varchar(100) not null,
   PRIMARY KEY ( ID )
 );
+
+create table LABELS(
+  ID int not null AUTO_INCREMENT,
+  k varchar(100) not null,
+  v varchar(800) not null,
+  lang varchar(5) not null,
+  PRIMARY KEY ( ID )
+);

@@ -55,6 +55,15 @@ Global Custom Error Handling Page :
 * http://localhost:60501/api/v1/countries/err
 * 
 
+Caching and Scheduling, Conditional On Property ( LabelController ) :
+* 
+
+
+### TODO
+* @Cacheable
+* @Mockito
+* Java File IO
+
 ### h2 database configuration
 password is 'password'
 
@@ -96,8 +105,12 @@ JVM Params :
 - Global Error Handler :
   - https://stackoverflow.com/questions/63022189/get-stack-trace-from-httpservletrequest-in-spring-boot
   - https://www.baeldung.com/exception-handling-for-rest-with-spring
-
-
+- Country language Codes ( en, ja, zh ) : ISO 639-1 Code
+  - https://www.loc.gov/standards/iso639-2/php/code_list.php
+- General Spring Related Info
+  - https://stackoverflow.com/questions/21218868/explain-why-constructor-inject-is-better-than-other-options
+- Cron Expressions
+  - https://www.baeldung.com/cron-expressions
 
 ----
 ### Spring Boot Reference Documentation
