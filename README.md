@@ -74,6 +74,10 @@ password is 'password'
 JVM Params :
 - -Duser.timezone=UTC -Dfile.encoding=utf-8
 
+Intellij Configuration : 
+![img.png](docs/img.png)
+
+
 ----
 ###Features 
 - Internationalization added for file encodings
