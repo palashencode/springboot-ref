@@ -36,6 +36,8 @@ public class LabelServiceImpl implements LabelService {
         return labelRepository.findByKeyAndLanguageCode(k, lang);
     }
 
+
+
     @Override
     public Label upsert(String k, String v, String lang){
         Label label = labelRepository.findByKeyAndLanguageCode(k, lang);
@@ -60,6 +62,16 @@ public class LabelServiceImpl implements LabelService {
     @Cacheable(value = "LABEL_CACHE_LANG")
     public List<Label> getByLang(String lang) {
         return labelRepository.findByLanguageCode(lang);
+    }
+
+    @Override
+    public void deleteAll() {
+        labelRepository.deleteAll();;
+    }
+
+    @Override
+    public List<Label> saveAll(List<Label> labels) {
+        return labelRepository.saveAll(labels);
     }
 
     @CacheEvict(value = {"LABEL_CACHE_ALL", "LABEL_CACHE_LANG"}, allEntries = true)

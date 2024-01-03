@@ -31,7 +31,8 @@ dependencies {
     implementation 'com.jayway.jsonpath:json-path:2.8.0'
     implementation 'com.google.protobuf:protobuf-java:3.25.0'
     implementation 'com.google.protobuf:protobuf-java-util:3.25.0'
-
+    implementation 'commons-fileupload:commons-fileupload:1.5'
+    implementation 'org.apache.derby:derby:10.17.1.0'
 
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
 	compileOnly 'org.projectlombok:lombok:1.18.30'

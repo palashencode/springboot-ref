@@ -21,6 +21,10 @@ Csv endpoints as follows ( i18n handled by jvm param )
 * http://localhost:60501/api/v1/csv/download/users
 * http://localhost:60501/api/v1/csv/read/users ( read csv file )
 
+Upload (Multipart) and Download File
+* http://localhost:60501/api/v1/csv/upload/labels?overWrite=true
+* ttp://localhost:60501/api/v1/csv/download/labels
+
 Json endpoints as follows : 
 * http://localhost:60501/api/v1/json/file/users
 * http://localhost:60501/api/v1/json/read/users

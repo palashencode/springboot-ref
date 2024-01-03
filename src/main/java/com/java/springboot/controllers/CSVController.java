@@ -1,8 +1,10 @@
 package com.java.springboot.controllers;
 
 
+import com.java.springboot.entities.Label;
 import com.java.springboot.entities.User;
 import com.java.springboot.service.CountryService;
+import com.java.springboot.service.LabelService;
 import com.java.springboot.service.UserService;
 import com.java.springboot.util.CustomCSVColumnWithHeaderMappingStrategy;
 import com.java.springboot.util.GeneralUtil;
@@ -17,30 +19,78 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Reader;
-import java.io.Writer;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/csv/")
 @Slf4j
 public class CSVController {
 
-    private final static String csvPath = "src/main/resources/csv/";
+    private static final String csvPath = "src/main/resources/csv/";
 
     @Autowired
     CountryService countryService;
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    LabelService labelService;
+
+
+
+    @PostMapping(value = "upload/labels", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Map<String,Object> uploadLabelsInCSV(@RequestPart(required = true) MultipartFile file, boolean overWrite){
+        Map<String,Object> response = new LinkedHashMap<>();
+        List<Label> labels = null;
+        response.put("fileName", file.getName());
+        response.put("fileNameOriginal", file.getOriginalFilename());
+        response.put("fileSize", file.getSize()+"");
+        response.put("fileType", file.getContentType());
+        try(Reader reader = new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8)){
+            CsvToBean<Label> csvReader = new CsvToBeanBuilder<Label>(reader)
+                    .withType(Label.class)
+                    .build();
+            labels = csvReader.parse();
+            response.put("data", labels);
+        }catch(Exception e){
+            log.error("error in calling - readUsersFromCSVFolder"+e.getMessage());
+        }
+
+        if(overWrite){
+            labelService.deleteAll();
+            List<Label> labelsDB = labelService.saveAll(labels);
+            response.put("data", labelsDB);
+        }
+        return response;
+    }
+
+    @GetMapping("download/labels")
+    public void  downloadLabelsInCSV(HttpServletResponse response){
+
+        // set response headers
+        response.setContentType("text/csv");
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + "Labels.csv" + "\"");
+        response.setCharacterEncoding("UTF-8");
+
+        List<Label> labels = labelService.getAll();
+        String[] header = new String[] {"id", "key", "value", "languageCode"};
+        try{
+            generateAndWriteCSV(labels, response.getWriter(), header, Label.class);
+        }catch(Exception e){
+            log.error("error in calling - downloadLabelsInCSV"+e.getMessage());
+        }
+    }
 
     @GetMapping("download/users")
     public void  downloadUsersInCSV(HttpServletResponse response){

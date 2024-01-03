@@ -1,5 +1,6 @@
 package com.java.springboot.entities;
 
+import com.opencsv.bean.CsvBindByName;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -8,6 +8,8 @@ public interface LabelService {
 
     List<Label> getAll();
     List<Label> getByLang(String lang);
+    void deleteAll();
+    List<Label> saveAll(List<Label> labels);
     Label upsert(String k, String v, String lang);
     Label getLabel(String k, String v, String lang);
     Label getLabel(String k, String lang);
