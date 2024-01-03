@@ -23,7 +23,9 @@ Csv endpoints as follows ( i18n handled by jvm param )
 
 Upload (Multipart) and Download File
 * http://localhost:60501/api/v1/csv/upload/labels?overWrite=true
-* ttp://localhost:60501/api/v1/csv/download/labels
+* http://localhost:60501/api/v1/csv/download/labels
+
+![file-upload-img](docs/swagger-file-upload-img)
 
 Json endpoints as follows : 
 * http://localhost:60501/api/v1/json/file/users
@@ -60,8 +62,6 @@ Global Custom Error Handling Page :
 * 
 
 Caching and Scheduling, Conditional On Property ( LabelController ) :
-* 
-
 
 ### TODO
 * @Cacheable
@@ -75,7 +75,7 @@ JVM Params :
 - -Duser.timezone=UTC -Dfile.encoding=utf-8
 
 Intellij Configuration : 
-![img.png](docs/img.png)
+![intellij-config-screen.png](docs/intellij-config-screen.png)
 
 
 ----
