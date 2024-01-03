@@ -7,5 +7,8 @@ import java.util.List;
 public interface UserService {
 
     List<User> getUsers();
+    String getDBTime();
+    List<User> getUsersSortedByDOB();
+    List<User> getUsersSortedByName(String column);
 
 }

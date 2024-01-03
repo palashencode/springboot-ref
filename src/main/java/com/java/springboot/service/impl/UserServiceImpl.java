@@ -21,6 +21,21 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public List<User> getUsersSortedByDOB() {
+        return userRepository.listByDOB();
+    }
+
+    @Override
+    public String getDBTime() {
+        return userRepository.getDBTime();
+    }
+
+    @Override
+    public List<User> getUsersSortedByName(String name) {
+        return userRepository.listUserByName(name);
+    }
+
     @PostConstruct
     public void init(){
         userRepository.saveAll(MockUtil.getUsers());

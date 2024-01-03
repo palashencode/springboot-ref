@@ -10,6 +10,10 @@ Please use the swagger for comprehensive list of endpoints.
 * http://localhost:60501/status
 * http://localhost:60501/h2-console
 
+Env Controller
+* http://localhost:60501/api/v1/envinfo
+* http://localhost:60501/api/v1/envinfo/rmxbean
+
 View endpoints are as follows 
 * http://localhost:60501/
 * http://localhost:60501/countries
@@ -74,7 +78,7 @@ password is 'password'
 JVM Params :
 - -Duser.timezone=UTC -Dfile.encoding=utf-8
 
-Intellij Configuration : 
+Intellij Configuration :
 ![intellij-config-screen.png](docs/intellij-config-screen.png)
 
 
@@ -119,7 +123,12 @@ Intellij Configuration :
   - https://stackoverflow.com/questions/21218868/explain-why-constructor-inject-is-better-than-other-options
 - Cron Expressions
   - https://www.baeldung.com/cron-expressions
-
+- SPEL Support in JPA
+  - https://spring.io/blog/2014/07/15/spel-support-in-spring-data-jpa-query-definitions/
+- Hibernate Logging Properties
+  - https://thorben-janssen.com/hibernate-logging-guide/
+- Using Environment Variables
+  - https://www.baeldung.com/spring-boot-properties-env-variables
 ----
 ### Spring Boot Reference Documentation
 For further reference, please consider the following sections:
