@@ -25,7 +25,7 @@ Upload (Multipart) and Download File
 * http://localhost:60501/api/v1/csv/upload/labels?overWrite=true
 * http://localhost:60501/api/v1/csv/download/labels
 
-![file-upload-img](docs/swagger-file-upload-img)
+![swagger screenshot of file upload](docs/swagger-file-upload-img.png)
 
 Json endpoints as follows : 
 * http://localhost:60501/api/v1/json/file/users
