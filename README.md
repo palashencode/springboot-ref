@@ -1,6 +1,10 @@
 ### Project Specific Documentation
 This can be used as a starter project for testing out endpoints and functionalities;
 
+Imp VM Parameters:
+- -Dfile.encoding=UTF-8 ( to read sql initialization script properly )
+- 
+
 Local endpoints active are below - all end points are not mapped here. 
 This is to give the user  starting point. 
 Please use the swagger for comprehensive list of endpoints.
@@ -14,8 +18,9 @@ Env Controller
 * http://localhost:60501/api/v1/envinfo
 * http://localhost:60501/api/v1/envinfo/rmxbean
 
-View endpoints are as follows 
+View endpoints are as follows
 * http://localhost:60501/
+* http://localhost:60501/home
 * http://localhost:60501/countries
 * http://localhost:60501/starter
 * http://localhost:60501/starter-blank

@@ -33,6 +33,7 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java-util:3.25.0'
     implementation 'commons-fileupload:commons-fileupload:1.5'
     implementation 'org.apache.derby:derby:10.17.1.0'
+	implementation 'org.json:json:20240303'
 
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
 	compileOnly 'org.projectlombok:lombok:1.18.30'

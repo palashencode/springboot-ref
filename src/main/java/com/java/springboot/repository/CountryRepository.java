@@ -15,6 +15,5 @@ public interface CountryRepository extends CrudRepository<Country, Integer>, Jpa
     @Modifying
     @Query("delete from Country c where c.name = ?1")
     void deleteByCountryName(String name);
-
     List<Country> findByNameIgnoreCase(String name);
 }

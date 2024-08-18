@@ -3,7 +3,7 @@
     <#include "bootstrap-header.ftl">
     <body>
         <main role="main" class="container">
-          <div class="starter-template">
+          <div class="container">
              <h2>List of users</h2>
             <table border="1">
                         <tr>

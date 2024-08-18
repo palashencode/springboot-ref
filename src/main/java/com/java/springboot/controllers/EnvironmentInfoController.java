@@ -22,7 +22,7 @@ import java.util.Map;
 @Slf4j
 public class EnvironmentInfoController {
 
-    @Value("${secret.key}")
+    @Value("${secret.key:dummy}")
     private String secretKey;
 
     @Autowired

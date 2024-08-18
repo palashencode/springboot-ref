@@ -152,7 +152,7 @@ public class PDFController {
         int len = fontList.size();
         boolean reTry = true;
         int i = 0;
-        while(reTry && (i <= len)) {
+        while(reTry && (i < len)) {
             try {
                 contentStream.showText(line);
                 reTry = false;

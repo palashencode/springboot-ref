@@ -4,10 +4,17 @@ td:nth-child(3) {
     text-align: right;
 }
 
+table {
+    min-width: 30%;
+    margin: auto;
+}
+
 body {
   padding-top: 5rem;
 }
-.starter-template {
+.container {
   padding: 3rem 1.5rem;
   text-align: center;
+  margin : 0px auto;
+  width:100%;
 }
