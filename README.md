@@ -23,8 +23,8 @@ logging.level.root=INFO
 logging.level.com.java.springboot.controllers.StatusController=TRACE
 ```
 Spring Logging Documentation :
-https://docs.spring.io/spring-boot/reference/features/logging.html#features.logging.custom-log-configuration
-https://logback.qos.ch/manual/appenders.html
+- https://docs.spring.io/spring-boot/reference/features/logging.html#features.logging.custom-log-configuration
+- https://logback.qos.ch/manual/appenders.html
 
 #### Logback
 - by default spring uses logback, which can be configured by logback.xml
@@ -36,6 +36,8 @@ https://logback.qos.ch/manual/appenders.html
   - `<include resource="org/springframework/boot/logging/logback/base.xml" />`
 - Spring Boot Logging 
   - https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/boot-features-logging.html#:~:text=By%20default%2C%20Spring%20Boot%20logs,for%20example%2C%20in%20your%20application.
+
+---
 
 Env Controller
 * http://localhost:60501/api/v1/envinfo
