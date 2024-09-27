@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration version="" label="">
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg %n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="myRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <springProfile name="local">
+            <file>
+                C:\_TEMP\Logs\SpringBootLogs\springApp.log
+            </file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>C:\_TEMP\Logs\SpringBootLogs\springApp-%d{yy-MM-dd}.%i.log</fileNamePattern>
+                <maxFileSize>10MB</maxFileSize>
+                <!-- keep 30 days' worth of history capped at 3GB total size -->
+                <maxHistory>30</maxHistory>
+                <totalSizeCap>3GB</totalSizeCap>
+            </rollingPolicy>
+        </springProfile>
+        <springProfile name="dev">
+            <file>
+                /var/tmp/SpringBootLogs/springApp.log
+            </file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>/var/tmp/SpringBootLogs/springApp-%d{yy-MM-dd}.%i.log</fileNamePattern>
+                <maxFileSize>10MB</maxFileSize>
+                <!-- keep 30 days' worth of history capped at 3GB total size -->
+                <maxHistory>30</maxHistory>
+                <totalSizeCap>3GB</totalSizeCap>
+            </rollingPolicy>
+        </springProfile>
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg %n
+            </pattern>
+        </encoder>
+    </appender>
+
+<!--    <appender name="myFileAppender" class="ch.qos.logback.core.FileAppender">-->
+<!--        <springProfile name="local">-->
+<!--            <file>-->
+<!--                C:\_TEMP\Logs\SpringBootLogs\springApp.log-->
+<!--            </file>-->
+<!--        </springProfile>-->
+<!--        <springProfile name="dev">-->
+<!--            <file>-->
+<!--                /var/tmp/SpringBootLogs/springApp.log-->
+<!--            </file>-->
+<!--        </springProfile>-->
+<!--        <encoder>-->
+<!--            <pattern>-->
+<!--                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg %n-->
+<!--            </pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+
+    <root level="INFO">
+        <appender-ref ref="myRollingFileAppender"/>
+<!--        <appender-ref ref="myConsoleAppender"/>-->
+    </root>
+
+</configuration>

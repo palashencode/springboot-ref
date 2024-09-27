@@ -3,7 +3,9 @@ This can be used as a starter project for testing out endpoints and functionalit
 
 Imp VM Parameters:
 - -Dfile.encoding=UTF-8 ( to read sql initialization script properly )
-- 
+- -Dsecret.api.value=secretValue
+- -Dspring.profiles.active=local  ( windows dev )
+- -Dspring.profiles.active=dev ( from unix/deployed instance )
 
 Local endpoints active are below - all end points are not mapped here. 
 This is to give the user  starting point. 
@@ -13,6 +15,27 @@ Please use the swagger for comprehensive list of endpoints.
 * http://localhost:60501/v3/api-docs
 * http://localhost:60501/status
 * http://localhost:60501/h2-console
+
+### Logging 
+The following can be used to set application/package/class level logging
+```
+logging.level.root=INFO
+logging.level.com.java.springboot.controllers.StatusController=TRACE
+```
+Spring Logging Documentation :
+https://docs.spring.io/spring-boot/reference/features/logging.html#features.logging.custom-log-configuration
+https://logback.qos.ch/manual/appenders.html
+
+#### Logback
+- by default spring uses logback, which can be configured by logback.xml
+- use `logback-spring.xml` instead of `logback.xml` as it allows spring to load custom configs
+- profile specific config can be loaded with `<springProfile name="dev">`
+- understanding how `maxHistory` works - https://pauldally.medium.com/why-is-my-logback-rolling-policy-keeping-more-than-maxhistory-files-66fbc865f38
+- `maxHistory` changes behaviour based on policyType
+- use if you want to use the default spring config in your logback along with your own config
+  - `<include resource="org/springframework/boot/logging/logback/base.xml" />`
+- Spring Boot Logging 
+  - https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/boot-features-logging.html#:~:text=By%20default%2C%20Spring%20Boot%20logs,for%20example%2C%20in%20your%20application.
 
 Env Controller
 * http://localhost:60501/api/v1/envinfo
