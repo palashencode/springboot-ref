@@ -51,10 +51,17 @@ Spring Logging Documentation :
 - add log4j2 dependency and exclude default logging dependency 
 - `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
 - `exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
+- comment `logging.config=src/main/resources/log4j2-dev.xml` in `application-dev.properties`
+
+#### Swapping logback for log4j2
+- comment log4j2 dependency and remove spring logging exclude
+- comment `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
+- comment`exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
 
 #### Log4j2
 - `monitorInterval="10"` works, but you must update the `log4j2.xml` in `build\resources`
 - console, file-based and rolling file based implementation added for log4j2 
+- for envt specific log4j2 files refer - https://www.baeldung.com/spring-log4j2-config-per-profile
 
 References :
 - [logback] Understanding duplicate commons-logging issue in spring-boot - https://github.com/spring-projects/spring-framework/issues/20611
