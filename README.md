@@ -16,6 +16,8 @@ Please use the swagger for comprehensive list of endpoints.
 * http://localhost:60501/status
 * http://localhost:60501/h2-console
 
+---
+
 ### Logging 
 The following can be used to set application/package/class level logging
 ```
@@ -36,6 +38,12 @@ Spring Logging Documentation :
   - `<include resource="org/springframework/boot/logging/logback/base.xml" />`
 - Spring Boot Logging 
   - https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/boot-features-logging.html#:~:text=By%20default%2C%20Spring%20Boot%20logs,for%20example%2C%20in%20your%20application.
+
+#### Understanding the current logback config
+- Functionalities ( Console logging, Rolling file logging, Specific java package based logging )
+- Console logging is inherited from `<include resource="org/springframework/boot/logging/logback/base.xml" />`
+- Additional file logging is done using `myRollingFileAppender`
+- Specific package based file logging is done with `myCustomFileAppender` using `<logger>`
 
 ---
 

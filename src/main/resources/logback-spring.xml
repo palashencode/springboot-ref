@@ -42,24 +42,28 @@
         </encoder>
     </appender>
 
-<!--    <appender name="myFileAppender" class="ch.qos.logback.core.FileAppender">-->
-<!--        <springProfile name="local">-->
-<!--            <file>-->
-<!--                C:\_TEMP\Logs\SpringBootLogs\springApp.log-->
-<!--            </file>-->
-<!--        </springProfile>-->
-<!--        <springProfile name="dev">-->
-<!--            <file>-->
-<!--                /var/tmp/SpringBootLogs/springApp.log-->
-<!--            </file>-->
-<!--        </springProfile>-->
-<!--        <encoder>-->
-<!--            <pattern>-->
-<!--                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg %n-->
-<!--            </pattern>-->
-<!--        </encoder>-->
-<!--    </appender>-->
+    <appender name="myCustomFileAppender" class="ch.qos.logback.core.FileAppender">
+        <springProfile name="local">
+            <file>
+                C:\_TEMP\Logs\SpringBootLogs\CustomFileAppender\customLog.log
+            </file>
+        </springProfile>
+        <springProfile name="dev">
+            <file>
+                /var/tmp/SpringBootLogs/CustomFileAppender/customLog.log
+            </file>
+        </springProfile>
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg %n
+            </pattern>
+        </encoder>
+    </appender>
 
+
+    <logger name="com.java.springboot.controllers.StatusController" level="trace" additivity="false">
+        <appender-ref ref="myCustomFileAppender"/>
+    </logger>
 
     <root level="INFO">
         <appender-ref ref="myRollingFileAppender"/>
