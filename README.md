@@ -25,6 +25,7 @@ logging.level.root=INFO
 logging.level.com.java.springboot.controllers.StatusController=TRACE
 ```
 Spring Logging Documentation :
+- Standard Spring Logging Doc https://docs.spring.io/spring-boot/how-to/logging.html
 - https://docs.spring.io/spring-boot/reference/features/logging.html#features.logging.custom-log-configuration
 - https://logback.qos.ch/manual/appenders.html
 
@@ -40,13 +41,22 @@ Spring Logging Documentation :
   - https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/boot-features-logging.html#:~:text=By%20default%2C%20Spring%20Boot%20logs,for%20example%2C%20in%20your%20application.
 
 #### Understanding the current logback config
+- for logback it will create log files in `C:\_TEMP\Logs\SpringBootLogs\CustomFileAppender\customLog.log`
 - Functionalities ( Console logging, Rolling file logging, Specific java package based logging )
 - Console logging is inherited from `<include resource="org/springframework/boot/logging/logback/base.xml" />`
 - Additional file logging is done using `myRollingFileAppender`
 - Specific package based file logging is done with `myCustomFileAppender` using `<logger>`
 
+#### Swapping Log4j2 for Logback
+- add log4j2 dependency and exclude default logging dependency 
+- `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
+- `exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
+
+#### Log4j2
+- `monitorInterval="10"` works, but you must update the `log4j2.xml` in `build\resources`
+
 References :
-- Understanding duplicate commons-logging issue in spring-boot - https://github.com/spring-projects/spring-framework/issues/20611
+- [logback] Understanding duplicate commons-logging issue in spring-boot - https://github.com/spring-projects/spring-framework/issues/20611
   - the same class in `commons-logging` is implemented by `spring-jcl` as a fallback in case both are present in classpath
   - `org.apache.commons.logging.LogFactory` included in `commons-logging` is given a dummy child `LogFactoryService.java`
   - this causes the message to show when it gets initialized `Standard Commons Logging discovery in action with spring-jcl`
@@ -55,6 +65,9 @@ References :
       - https://github.com/spring-projects/spring-framework/blob/6.0.x/spring-jcl/src/main/java/org/apache/commons/logging/LogFactory.java
     - spring-jcl sub-class
       - https://github.com/spring-projects/spring-framework/blob/6.0.x/spring-jcl/src/main/java/org/apache/commons/logging/LogFactoryService.java
+    - Problems with Apache Commons Logging ( JCL ) - https://stackoverflow.com/questions/3222895/what-is-the-issue-with-the-runtime-discovery-algorithm-of-apache-commons-logging/
+    - Commons logging was my fault blog - https://radio-weblogs.com/0122027/2003/08/15.html
+- [log4j2] Disadvantages of MemoryMappedAppender - https://stackoverflow.com/questions/22630547/disadvantages-of-using-memory-mapped-files
 
 
 ---
