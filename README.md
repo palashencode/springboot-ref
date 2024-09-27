@@ -58,7 +58,7 @@ Spring Logging Documentation :
 - comment `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
 - comment`exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
 - comment `logging.config=src/main/resources/log4j2-dev.xml` in `application-dev.properties`
-- 
+
 #### Log4j2
 - `monitorInterval="10"` works, but you must update the `log4j2.xml` in `build\resources`
 - console, file-based and rolling file based implementation added for log4j2 
