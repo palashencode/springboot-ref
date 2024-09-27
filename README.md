@@ -54,6 +54,7 @@ Spring Logging Documentation :
 
 #### Log4j2
 - `monitorInterval="10"` works, but you must update the `log4j2.xml` in `build\resources`
+- console, file-based and rolling file based implementation added for log4j2 
 
 References :
 - [logback] Understanding duplicate commons-logging issue in spring-boot - https://github.com/spring-projects/spring-framework/issues/20611
