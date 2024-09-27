@@ -36,7 +36,7 @@ Spring Logging Documentation :
 - `maxHistory` changes behaviour based on policyType
 - use if you want to use the default spring config in your logback along with your own config
   - `<include resource="org/springframework/boot/logging/logback/base.xml" />`
-- Spring Boot Logging 
+- Spring Boot Logging Documentation
   - https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/boot-features-logging.html#:~:text=By%20default%2C%20Spring%20Boot%20logs,for%20example%2C%20in%20your%20application.
 
 #### Understanding the current logback config
@@ -44,6 +44,18 @@ Spring Logging Documentation :
 - Console logging is inherited from `<include resource="org/springframework/boot/logging/logback/base.xml" />`
 - Additional file logging is done using `myRollingFileAppender`
 - Specific package based file logging is done with `myCustomFileAppender` using `<logger>`
+
+References :
+- Understanding duplicate commons-logging issue in spring-boot - https://github.com/spring-projects/spring-framework/issues/20611
+  - the same class in `commons-logging` is implemented by `spring-jcl` as a fallback in case both are present in classpath
+  - `org.apache.commons.logging.LogFactory` included in `commons-logging` is given a dummy child `LogFactoryService.java`
+  - this causes the message to show when it gets initialized `Standard Commons Logging discovery in action with spring-jcl`
+    - `org.apache.commons.logging.LogFactory`
+      - https://commons.apache.org/proper/commons-logging/apidocs/org/apache/commons/logging/LogFactory.html
+      - https://github.com/spring-projects/spring-framework/blob/6.0.x/spring-jcl/src/main/java/org/apache/commons/logging/LogFactory.java
+    - spring-jcl sub-class
+      - https://github.com/spring-projects/spring-framework/blob/6.0.x/spring-jcl/src/main/java/org/apache/commons/logging/LogFactoryService.java
+
 
 ---
 
