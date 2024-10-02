@@ -34,6 +34,7 @@ public class StatusController {
         log.info("INFO Status Call : {}",Instant.now());
         log.warn("WARN Status Call : {}",Instant.now());
         log.error("ERROR Status Call : {}",Instant.now());
+
     }
 
 }

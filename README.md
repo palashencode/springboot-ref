@@ -39,6 +39,7 @@ Spring Logging Documentation :
   - `<include resource="org/springframework/boot/logging/logback/base.xml" />`
 - Spring Boot Logging Documentation
   - https://docs.spring.io/spring-boot/docs/2.0.x/reference/html/boot-features-logging.html#:~:text=By%20default%2C%20Spring%20Boot%20logs,for%20example%2C%20in%20your%20application.
+  - profile specific logging in logback - https://howtodoinjava.com/spring-boot/profile-specific-logging
 
 #### Understanding the current logback config
 - for logback it will create log files in `C:\_TEMP\Logs\SpringBootLogs\CustomFileAppender\customLog.log`
@@ -46,18 +47,22 @@ Spring Logging Documentation :
 - Console logging is inherited from `<include resource="org/springframework/boot/logging/logback/base.xml" />`
 - Additional file logging is done using `myRollingFileAppender`
 - Specific package based file logging is done with `myCustomFileAppender` using `<logger>`
+- LogBook library can be used to log HTTP request/responses
+  - enabled by `logging.level.org.zalando.logbook.Logbook=TRACE`
+  - https://www.baeldung.com/spring-logbook-http-logging
+- Structured logging added with logstash encoder and `jsonConsoleAppender` appender
+  - https://www.baeldung.com/java-structured-logging
+
 
 #### Swapping Log4j2 for Logback
 - add log4j2 dependency and exclude default logging dependency 
 - `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
 - `exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
-- add `logging.config=src/main/resources/log4j2-dev.xml` in `application-dev.properties`
 
 #### Swapping logback for log4j2
 - comment log4j2 dependency and remove spring logging exclude
 - comment `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
 - comment`exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
-- comment `logging.config=src/main/resources/log4j2-dev.xml` in `application-dev.properties`
 
 #### Log4j2
 - `monitorInterval="10"` works, but you must update the `log4j2.xml` in `build\resources`
@@ -77,7 +82,11 @@ References :
     - Problems with Apache Commons Logging ( JCL ) - https://stackoverflow.com/questions/3222895/what-is-the-issue-with-the-runtime-discovery-algorithm-of-apache-commons-logging/
     - Commons logging was my fault blog - https://radio-weblogs.com/0122027/2003/08/15.html
 - [log4j2] Disadvantages of MemoryMappedAppender - https://stackoverflow.com/questions/22630547/disadvantages-of-using-memory-mapped-files
-
+- [logback] logback conversion words - https://logback.qos.ch/manual/layouts.html#conversionWord
+- [logback] baeldung logback articles - https://www.baeldung.com/tag/logback
+- Mapped Dynamic Contexts (MDCs) are used for thread-specific logging - https://www.baeldung.com/mdc-in-log4j-2-logback
+- Nested Dignostic Context ( NDC - not supported in SLF4J ) - https://www.baeldung.com/java-logging-ndc-log4j
+- [log4j2] How to send logging into to Syslog Server - https://www.baeldung.com/log4j-to-syslog
 
 ---
 

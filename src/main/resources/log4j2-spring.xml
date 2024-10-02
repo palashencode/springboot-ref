@@ -2,8 +2,21 @@
 
 <!--        Log4j2 will check for configuration file changes after 30 seconds-->
 <configuration status="INFO" monitorInterval="10">
-    <Appenders>
 
+        <Properties>
+            <SpringProfile  name="local">
+                <Property name="logFileName">C:\_TEMP\Logs\SpringBootLogs\LOG4J2\springApp.log</Property>
+                <Property name="rollingLogFileName">C:\_TEMP\Logs\SpringBootLogs\LOG4J2\RollFile\springApp.log</Property>
+                <Property name="rollingLogFilePattern">C:\_TEMP\Logs\SpringBootLogs\LOG4J2\RollFile\springApp - %d{MM-dd-yyyy HH-mm-ss} - %i.log</Property>
+            </SpringProfile>
+            <SpringProfile  name="dev">
+                <Property name="logFileName">/var/tmp/SpringBootLogs/LOG4J2/springApp.log</Property>
+                <Property name="rollingLogFileName">/var/tmp/SpringBootLogs/LOG4J2/RollFile/springApp.log</Property>
+                <Property name="rollingLogFilePattern">/var/tmp/SpringBootLogs/LOG4J2/RollFile/springApp-%d{MM-dd-yyyy HH-mm-ss}-%i.log</Property>
+            </SpringProfile>
+        </Properties>
+
+    <Appenders>
         <Console name="myConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [LOG4J2] [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
@@ -13,14 +26,14 @@
         </Console>
 
         <File name           ="myFileAppender"
-              fileName       ="/var/tmp/SpringBootLogs/LOG4J2/springApp.log"
+              fileName       ="${logFileName}"
               immediateFlush ="true"
               append         ="true">
             <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [LOG4J2-FILE] [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
-        <RollingFile name="myRollingFileAppender" fileName="/var/tmp/SpringBootLogs/LOG4J2/RollFile/springApp.log"
-                     filePattern="/var/tmp/SpringBootLogs/LOG4J2/RollFile/springApp-%d{MM-dd-yyyy HH-mm-ss}-%i.log">
+        <RollingFile name="myRollingFileAppender" fileName="${rollingLogFileName}"
+                     filePattern="${rollingLogFilePattern}">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [LOG4J2-ROLLFILE] [%t] %-5level %logger{36} - %msg%n"/>
             <Policies>
                 <!-- Rollover when file size reaches 10MB or every 10 units of interval defined in file pattern -->
