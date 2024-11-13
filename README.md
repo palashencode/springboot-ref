@@ -1,5 +1,5 @@
 ### Project Specific Documentation
-This can be used as a starter project for testing out endpoints and functionalities;
+This is a reference spring project showing different functionalities. The idea is to use this as a reference for copying out snippets and functionalities.
 
 Imp VM Parameters:
 - -Dfile.encoding=UTF-8 ( to read sql initialization script properly )
