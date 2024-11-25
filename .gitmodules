@@ -1,0 +1,3 @@
+[submodule "jvm-diagnostics"]
+	path = jvm-diagnostics
+	url = https://github.com/palashencode/jvm-diagnostics.git

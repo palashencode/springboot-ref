@@ -7,6 +7,11 @@ Imp VM Parameters:
 - -Dspring.profiles.active=local  ( windows dev )
 - -Dspring.profiles.active=dev ( from unix/deployed instance )
 
+
+`-Xmx512m -Xms512m`
+`-Xlog:class+load=info:file=classload.log -Xlog:gc*:file=C:\_TEMP\Logs\GCLogs\gc.log`
+`-Xmx512m -Dfile.encoding=UTF-8 -Dsecret.api.value=secretValue -Dspring.profiles.active=local `
+
 Local endpoints active are below - all end points are not mapped here. 
 This is to give the user  starting point. 
 Please use the swagger for comprehensive list of endpoints.
@@ -54,12 +59,12 @@ Spring Logging Documentation :
   - https://www.baeldung.com/java-structured-logging
 
 
-#### Swapping Log4j2 for Logback
+#### Using Log4J
 - add log4j2 dependency and exclude default logging dependency 
 - `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
 - `exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
 
-#### Swapping logback for log4j2
+#### Using LogBack
 - comment log4j2 dependency and remove spring logging exclude
 - comment `implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.3.4`
 - comment`exclude group: "org.springframework.boot", module:"spring-boot-starter-logging"`
