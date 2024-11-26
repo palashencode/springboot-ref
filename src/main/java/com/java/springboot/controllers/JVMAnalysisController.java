@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import com.java.springboot.entities.User;
 import com.java.springboot.model.mbean.Sample;
 import com.java.springboot.model.mbean.SampleMBean;
+import com.java.springboot.model.mbean.SystemConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/jvmanalysis")
 public class JVMAnalysisController {
+
+    @Operation(summary = "open 'jconsole' to check the MBean registered")
+    @GetMapping("/mxbean/register")
+    public String mxbeanRegister(@RequestParam(name = "id", defaultValue = "0") Integer id) throws MalformedObjectNameException, NotCompliantMBeanException, InstanceAlreadyExistsException, MBeanRegistrationException {
+        MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
+        ObjectName name = new ObjectName("com.example.custom:type=SystemConfig-"+id);
+        SystemConfig configMXBean = new SystemConfig();
+        mbs.registerMBean(configMXBean, name);
+
+        String res = "MXBean registered. at "+Instant.now();
+        log.info(res);
+        return res;
+    }
 
     @Operation(summary = "open 'jconsole' to check the MBean registered")
     @GetMapping("/mbean/register")

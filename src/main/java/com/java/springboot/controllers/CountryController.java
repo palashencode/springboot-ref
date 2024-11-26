@@ -3,6 +3,7 @@ package com.java.springboot.controllers;
 import com.java.springboot.entities.Country;
 import com.java.springboot.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
